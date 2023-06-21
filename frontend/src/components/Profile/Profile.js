@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import "./Profile.css";
 import pic from "../../assests/img/bookpic.jpg";
-//import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 //import { useNavigate } from 'react-router-dom';
-//import { getUserProfile } from '../../redux/actions/users/userActions';
+import { getUserProfileAction } from '../../redux/actions/users/usersActions';
 //import Loading from '../Loading/Loading';
 import { Link } from 'react-router-dom';
 
 const Profile = () => {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const navigate = useNavigate();
 
-  /*useEffect(() => {
-    dispatch(getUserProfile());
-  }, [dispatch, navigate]);*/
+  useEffect(() => {
+    dispatch(getUserProfileAction());
+  }, [dispatch]);
   //Check if user is login otherwise redirect
   //const userLogin = useSelector(state => state.userLogin);
   //const { userInfo } = userLogin;
