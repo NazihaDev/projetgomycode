@@ -14,15 +14,17 @@ bookRouter.post(
  // asynHandler,
 
   async (req, res) => {
-    //const userId = req.user._id;
-    const book = await Book.create(req.body);
-    /*const book = await Book.create({
+    /*const book = await Book.create(req.body);*/
+    /*const userId = JSON.stringify( req.body);
+    //console.log('From server', userId);*/
+    const book = await Book.create({
       title: req.body.title,
       category:req.body.category,
-      //createdBy:userId,
+      createdBy:req.body.createdBy,
       author:req.body.author,
-    });*/ 
-    //console.log(afficher);
+      //logmes:userId
+    });
+    
     if (book) {
       res.status(200);
       res.json(book);

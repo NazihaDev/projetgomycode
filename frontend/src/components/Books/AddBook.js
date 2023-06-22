@@ -9,7 +9,7 @@
   import React, { useState } from 'react';
   import {createBookAction } from '../../redux/actions/books/bookActions';
   import Modal from "react-modal";
-  import { useDispatch  } from 'react-redux';
+  import { useSelector, useDispatch  } from 'react-redux';
   //history
   //const AddBook = ({}) => {
 const AddBook = ({addnewbook}) => {
@@ -23,10 +23,10 @@ const AddBook = ({addnewbook}) => {
     const closeModal = () => {
       setIsOpen(false);
     };
-    //const userLogin = useSelector(state => state.userLogin);
+    const userLogin = useSelector(state => state.userLogin);
   
-   /*const { userInfo } = userLogin;
-    console.log(userInfo._id);*/
+   /**/const { userInfo } = userLogin;
+    console.log(userInfo._id);
     //dispatch action
     const dispatch = useDispatch();
   
@@ -37,7 +37,7 @@ const AddBook = ({addnewbook}) => {
         category,
         title,
         author,
-       // createdBy: userInfo && userInfo._id,
+        createdBy: userInfo && userInfo._id,
       };
       //e.preventDefault();
       dispatch(createBookAction(data));
