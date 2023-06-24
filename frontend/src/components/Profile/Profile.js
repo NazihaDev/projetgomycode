@@ -36,8 +36,24 @@ const Profile = () => {
                 <tr className="table-dark" key={book._id}>
                   <th scope="row">{book.author}</th>
                   <td>{book.title}</td>
-                  <td>Delete</td>
-                  <td>Update</td>
+                  <td>
+                   <i
+                      className="fas fa-trash "
+                      style={{ color: "red", cursor: "progress" }}
+              ></i>
+              
+                  </td>
+                  <td>
+                  <Link to="/update-book">
+                      <i
+                        className="far fa-edit"
+                        style={{
+                          color: "yellow",
+                          cursor: "progress",
+                        }}
+                      ></i>
+                   </Link>
+                  </td>
                 </tr>
               );
             })}
@@ -116,6 +132,7 @@ const Profile = () => {
               <Link to="/user-update" className="btn btn-primary">
                 Update your profile
               </Link>
+              
             </div>
           </div>
         </div>

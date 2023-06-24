@@ -44,7 +44,8 @@ import {
     } catch (error) {
         dispatch({
           type: CREATE_BOOK_FAIL,
-          payload: error.response && error.response.data.message,
+          payload: error.response 
+          //&& error.response.data.message,
         });
       }
     };
@@ -55,8 +56,8 @@ import {
   return async dispatch => {
     try {
       dispatch({
-        type: FETCH_USERS_REQUEST,
-        //type: FETCH_BOOK_REQUEST,
+        //type: FETCH_USERS_REQUEST,
+        type: FETCH_BOOK_REQUEST,
         //loading: true,
       });
       const config = {
@@ -108,39 +109,7 @@ export const fetchBooks = () => {
   };
 };
 
-//delete a book
 
-export const deleteBook = id => {
-  return async dispatch => {
-    try {
-      dispatch({
-        type: DELETE_BOOK_REQUEST,
-        loading: true,
-      });
-
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
-      const { data } = await axios.delete(`/api/books/${id}`, config);
-      dispatch({
-        type: DELETE_BOOK_SUCCESS,
-        payload: data,
-      });
-
-      dispatch({
-        type: FETCH_BOOK_SUCCESS,
-      });
-    } catch (error) {
-      dispatch({
-        type: DELETE_BOOK_FAIL,
-        loading: false,
-        error: error.response && error.response.data.message,
-      });
-    }
-  };
-};
 */
 //Fetch a signle book
 /* const fetchBook = (id, bookData) => {
@@ -194,7 +163,43 @@ export const deleteBook = id => {
       dispatch({
         type: BOOK_UPDATE_FAIL,
         loading: false,
-        error: error.response && error.response.data.message,
+        error: error.response
+        // && error.response.data.message,
+      });
+    }
+  };
+};
+
+//delete a book
+
+const deleteBook = id => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: DELETE_BOOK_REQUEST,
+        loading: true,
+      });
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const { data } = await axios.delete(`/api/books/${id}`, config);
+      dispatch({
+        type: DELETE_BOOK_SUCCESS,
+        payload: data,
+      });
+
+      dispatch({
+        type: FETCH_BOOK_SUCCESS,
+      });
+    } catch (error) {
+      dispatch({
+        type: DELETE_BOOK_FAIL,
+        loading: false,
+        error: error.response
+        // && error.response.data.message,
       });
     }
   };
@@ -202,7 +207,5 @@ export const deleteBook = id => {
 
 
 
-
-
-   export{createBookAction,fetchBooks,updateBook};  
+   export{createBookAction,fetchBooks,updateBook,deleteBook};  
   

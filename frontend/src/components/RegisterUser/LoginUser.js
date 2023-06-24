@@ -25,16 +25,16 @@ const LoginUser = () => {
     e.preventDefault();
     console.log("email : ", email, " password : ", password);
     dispatch(loginUserAction(email, password));
-    navigate('/Navbar');
+    //navigate('/Navbar');
   };
   
   //redirection le page principale
  //navigate('/Navbar');
-  /*useEffect(() => {
-      if (!userInfo) {
-        navigate('/Navbar');
-      }
-    }, [state]);*/
+ useEffect(() => {
+  if (userInfo) {
+    navigate('/');
+  }
+}, [dispatch, userInfo, navigate]);
   console.log("error = ", error, "loading = ", loading);
   let jerror = { data: " empty" };
   if (typeof error === "undefined") {

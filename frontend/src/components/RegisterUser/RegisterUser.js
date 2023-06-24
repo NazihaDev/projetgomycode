@@ -20,14 +20,7 @@ const RegisterUser = () => {
   const userLogin = useSelector(state => state.userLogin);
   const { userInfo, loading, error, msgRegis, msgError } = userLogin;
 
-//Redirection page principale
-
-  /*useEffect(()=>{
-    if(!userInfo){
-   
-      navigate('/');
-    } 
-  },[userInfo]);*/
+//Redirection page principal
   
   
   
@@ -37,15 +30,15 @@ const RegisterUser = () => {
     dispatch( registerUserAction(name, email, password));
     console.log( userInfo, loading, error );
     console.log('inserer les donnees');
- //if (userInfo !== null && error === undefined) 
- navigate('/Navbar');
+  //if (userInfo !== null && error === undefined) 
+     // navigate('/');
   };
-  let jerror = { data: " empty" };
+  /*let jerror = { data: " empty" };
   if (typeof error === "undefined") {
   } else {
     jerror = JSON.parse(JSON.stringify(error));
     //console.log("jerror = ", jerror.data, "loading = ", loading);
-  }
+  }*/
  
   return (
     <div className='row container-height'>

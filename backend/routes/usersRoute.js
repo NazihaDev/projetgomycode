@@ -84,12 +84,12 @@ usersRoute.get(
 
 //update user video
 
-/*usersRoute.put(
-  '/update',
+usersRoute.put(
+  '/profile/update',
   authMiddleware,
   //asynchHandler
   async (req, res) => {
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user._id);
     if (user) {
       user.name = req.body.name || user.name;
       user.email = req.body.email || user.email;
@@ -109,29 +109,9 @@ usersRoute.get(
       res.status(401);
       res.send('User Not found');
     }
-  });*/
+  });
 
-//put
 
-usersRoute.put(
-  "/update/:id",
-  authMiddleware,
-  //asynchHandler
-  async (req, res) => {
-    const user = await User.findById(req.params.id);
-    if (user) {
-      const updateUser = await Book.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true,
-      });
-      res.status(200);
-      res.json(updateUser);
-    } else {
-      res.status(500);
-      res.send("Update failed");
-    }
-  }
-);
 
 //Delete User
 

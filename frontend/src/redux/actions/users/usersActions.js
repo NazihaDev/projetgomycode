@@ -8,15 +8,15 @@ import {
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
   USER_LOGOUT_SUCCESS,
-  //USER_PROFILE_REQUEST,
-  //USER_PROFILE_SUCCESS,
-  //USER_PROFILE_FAIL,
-  //USER_UPDATE_REQUEST,
-  //USER_UPDATE_SUCCESS,
-  //USER_UPDATE_FAIL,
-  //FETCH_USERS_REQUEST,
-  //FETCH_USERS_FAIL,
-  //FETCH_USERS_SUCCESS,
+  USER_PROFILE_REQUEST,
+  USER_PROFILE_SUCCESS,
+  USER_PROFILE_FAIL,
+  USER_UPDATE_REQUEST,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_FAIL,
+  FETCH_USERS_REQUEST,
+  FETCH_USERS_FAIL,
+  FETCH_USERS_SUCCESS,
 } from "../actionTypes";
 
 const registerUserAction = (name, email, password) => {
@@ -106,12 +106,10 @@ const logoutUserAction = () => {
     } catch (error) {}
   };
 };
-export { registerUserAction, loginUserAction, logoutUserAction };
 
-//Since this is an authenticated request that need a token we have to get the token from store and pass it to our action
-//But lucky to us dispatch takes another argument which represent all our data in our store
-/*
-export const getUserProfile = () => {
+//Profile Action
+
+ const getUserProfileAction = () => {
   return async (dispatch, getState) => {
     const { userInfo } = getState().userLogin;
     try {
@@ -123,6 +121,7 @@ export const getUserProfile = () => {
           authorization: `Bearer ${userInfo.token}`,
         },
       };
+      //make request
       const { data } = await axios.get('/api/users/profile', config);
       dispatch({
         type: USER_PROFILE_SUCCESS,
@@ -131,13 +130,17 @@ export const getUserProfile = () => {
     } catch (error) {
       dispatch({
         type: USER_PROFILE_FAIL,
-        payload: error.response && error.response.data.message,
+        payload: error.response ,//&& error.response.data.message,
       });
     }
   };
 };
+  
 
-export const updateUser = (name, email, password) => {
+
+//Update user
+
+ const updateUser = (name, email, password) => {
   return async (dispatch, getState) => {
     try {
       dispatch({
@@ -167,15 +170,17 @@ export const updateUser = (name, email, password) => {
       dispatch({
         type: USER_UPDATE_FAIL,
         payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
+          error.response// && error.response.data.message
+            //? error.response.data.message
+           // : error.message,
       });
     }
   };
 };
 
-export const fetchUsers = () => {
+
+
+ const fetchUsers = () => {
   return async dispatch => {
     try {
       dispatch({
@@ -195,8 +200,17 @@ export const fetchUsers = () => {
     } catch (error) {
       dispatch({
         type: FETCH_USERS_FAIL,
-        error: error.response && error.response.data.message,
+        error: error.response
+        // && error.response.data.message,
       });
     }
   };
-};*/
+};
+export { 
+  registerUserAction,
+   loginUserAction,
+    logoutUserAction ,
+    getUserProfileAction,
+    updateUser,
+    fetchUsers
+  };

@@ -4,24 +4,25 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import bookListReducer from '../reducers/books/bookListReducer';
 import createBookReducer from '../reducers/books/createBookReducer';
 import userReducer from'../reducers/users/userAuthreducer';
-//import userProfileReducer from '../reducers/userProfileReducer';
-//import userUpdateReducer from '../reducers/userUpdateReducer';
-
-//frontend\src\redux\reducers\books\createBookReducer.js
+import userProfileReducer from '../reducers/users/userProfileReducer';
+import updateUserProfile from '../reducers/users/updateUserProfile';
+import deleteBookReducer from '../reducers/books/bookdelete';
 
 import bookDetailsReducer from '../reducers/books/bookDetailsReducer';
-//import usersListReducer from '../reducers/usersListReducer';
+import usersListReducer from '../reducers/users/usersListReducer';
 
 const middleware = [thunk];
 
 const reducer = combineReducers({
-      userLogin: userReducer,  //login,register
-      bookCreated: createBookReducer,
-      booksList: bookListReducer,
+  userLogin: userReducer,  //login,register
+  bookCreated: createBookReducer,
+  booksList: bookListReducer,
   bookDetails: bookDetailsReducer,
-  //userProfile: userProfileReducer,
-  //updatedUser: userUpdateReducer,
-  //usersList: usersListReducer,
+  userProfile: userProfileReducer,
+  updatedUser: updateUserProfile,
+  usersList: usersListReducer,
+  bookDelete:deleteBookReducer
+
 });
 const userAuthFromStorage = localStorage.getItem('userAuthData')
   ? JSON.parse(localStorage.getItem('userAuthData'))

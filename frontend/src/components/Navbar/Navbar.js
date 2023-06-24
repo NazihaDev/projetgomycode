@@ -1,30 +1,19 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { logoutUserAction } from '../../redux/actions/users/usersActions';
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logoutUserAction } from "../../redux/actions/users/usersActions";
 
 const Navbar = () => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const state = useSelector(state => state.userLogin);
+  const state = useSelector((state) => state.userLogin);
   const { loading, userInfo, error } = state;
-  
- 
-  //logout handler
-
   const logoutHandler = () => {
     //console.log("logout");
-   dispatch(logoutUserAction());
-  
-    navigate('/Navbar');
+    dispatch(logoutUserAction());
+    navigate("/Navbar");
   };
-  
-
- 
-
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -42,7 +31,6 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-
         <div className="collapse navbar-collapse" id="navbarColor01">
           <ul className="navbar-nav m-auto">
             <li className="nav-item active">
@@ -50,44 +38,48 @@ const Navbar = () => {
                 Home <span className="sr-only">(current)</span>
               </Link>
             </li>
-            {!userInfo ?(
+            {!userInfo ? (
               <>
-            <li className="nav-item">
-                <Link className="nav-link" to="/login ">
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/register ">
-                  Register
-                </Link>
-              </li>
-           
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login ">
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/register ">
+                    Register
+                  </Link>
+                </li>
               </>
-            ):(
+            ) : (
               <>
-               <li className="nav-item">
-                <Link className="nav-link" to="/books">
-                  Books
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/addbook">
-                  Add book
-                </Link>
-              </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/books">
+                    Books
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/addbook">
+                    Add book
+                  </Link>
+                </li>
 
-              <li className="nav-item">
-                <Link className="nav-link" to="/users">
-                  Users
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link onClick={logoutHandler} className="nav-link" to="/">
-                  Logout
-            </Link>
-             
-              </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/users">
+                    Users
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/profile">
+                    Profile
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link onClick={logoutHandler} className="nav-link" to="/">
+                    Logout
+                  </Link>
+                </li>
               </>
             )}
           </ul>

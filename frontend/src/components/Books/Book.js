@@ -1,10 +1,10 @@
 import React from 'react';
-/*import { deleteBook } from '../../redux/actions/books/bookActions';
-import { useDispatch } from 'react-redux';*/
+import { deleteBook } from '../../redux/reducers/books/bookdelete';
+import { useDispatch } from 'react-redux';
 
 const Book = () => {
     console.log('Book.js');
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   return (
     <div>
       <div class='card mb-3' style={{ maxWidth: '540px' }}>

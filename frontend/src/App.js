@@ -8,6 +8,8 @@ import LoginUser from './components/RegisterUser/LoginUser';
 import RegisterUser from './components/RegisterUser/RegisterUser';
 import HomePage from './components/Home/HomePage';
 import Profile from './components/Profile/Profile';
+import UpdateProfile from './components/Profile/UpdateProfile';
+import Users from './components/Users/Users';
   console.log('App function fired')
   console.log('affiche le tableau book');
   const App = () => {
@@ -20,11 +22,13 @@ import Profile from './components/Profile/Profile';
           <Routes>
             {/*<Route exact path='/' element={<Navbar/>} />*/}
            <Route exact path="/" element={<HomePage/>} />
-           <Route exact path="profile" element={<Profile/>} />
+           <Route exact path="/profile" element={<Profile/>} />
+           <Route exact path="/user-update" element={<UpdateProfile/>} />
             <Route exact path="/addbook" element={<AddBook />} />
             <Route exact path="/books" element={<Books />} />
             <Route exact path="/login" element={<LoginUser />} />
             <Route exact path="/register" element={<RegisterUser />} />
+            <Route exact path='/users' component={Users} />
           </Routes>
         </Router>
       </>
