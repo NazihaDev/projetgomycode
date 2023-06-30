@@ -80,39 +80,9 @@ import {
     }
   };
 };
-/*//Fetch all books
 
-export const fetchBooks = () => {
-  return async dispatch => {
-    try {
-      dispatch({
-        type: FETCH_BOOK_REQUEST,
-        loading: true,
-      });
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
-      const { data } = await axios.get('/api/books', config);
-
-      dispatch({
-        type: FETCH_BOOK_SUCCESS,
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: FETCH_BOOK_FAIL,
-        error: error.response && error.response.data.message,
-      });
-    }
-  };
-};
-
-
-*/
 //Fetch a signle book
-/* const fetchBook = (id, bookData) => {
+ const fetchBook = (id, bookData) => {
   return async dispatch => {
     try {
       dispatch({
@@ -133,7 +103,8 @@ export const fetchBooks = () => {
     } catch (error) {
       dispatch({
         type: BOOK_DETAIL_FAIL,
-        error: error.response && error.response.data.message,
+        error: error.response 
+        //&& error.response.data.message,
       });
     }
   };
@@ -207,5 +178,5 @@ const deleteBook = id => {
 
 
 
-   export{createBookAction,fetchBooks,updateBook,deleteBook};  
+   export{createBookAction,fetchBooks,updateBook,deleteBook,fetchBook};  
   

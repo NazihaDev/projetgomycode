@@ -14,11 +14,13 @@ import {
         return {
           book: action.payload,
           loading: false,
+          msgRegis : 'create book successfully',
         };
       case CREATE_BOOK_FAIL:
         return {
           //loading: false,
           error: action.payload,
+          msgError : 'book already exist'
         };
       default:
         return state;

@@ -6,16 +6,24 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUserProfileAction } from "../../redux/actions/users/usersActions";
 //import Loading from '../Loading/Loading';
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { fetchBooks, deleteBook } from '../../redux/actions/books/bookActions';
 
 const Profile = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getUserProfileAction());
   }, [dispatch]);
   const userProfile = useSelector((state) => state.userProfile);
   const { user } = userProfile;
+
+  //Delete book handler
+  const handlerDeleteBook = id => {
+    dispatch(deleteBook(id));
+    navigate('/books');
+  };
 
   const listBooks = () => {
     console.log('nb books = ', user?.books.length);
@@ -38,13 +46,14 @@ const Profile = () => {
                   <td>{book.title}</td>
                   <td>
                    <i
+                    onClick={() => handlerDeleteBook(book._id)}
                       className="fas fa-trash "
                       style={{ color: "red", cursor: "progress" }}
               ></i>
               
                   </td>
                   <td>
-                  <Link to="/update-book">
+                  <Link to={`/book/${book && book._id}`}>
                       <i
                         className="far fa-edit"
                         style={{

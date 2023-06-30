@@ -25,7 +25,7 @@ const Books = () => {
   /**/const bookslistvar = () => {
     if (!books || books.length === 0) {
     //if (0 === 0) {
-      return <div>Pas de books</div>;
+      //return <div>Pas de books</div>;
     } else {
       return (
         <table className="table table-hover">

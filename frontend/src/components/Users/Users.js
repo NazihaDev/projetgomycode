@@ -4,22 +4,27 @@ import { fetchUsers } from "../../redux/actions/users/usersActions";
 import Loading from '../Loading/Loading';
 
 const Users = () => {
+  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
+
   const usersList = useSelector(state => state.usersList);
   const { loading, users, error } = usersList;
 
+  console.log('aficher card');
   console.log(users, loading, error);
+
   return (
+    
     <div className='container-fluid'>
       <h1 className='text-center m-5'>List of users {users && users.length}</h1>
       <hr className='text-white' />
       <div className='row text-center justify-content-center'>
-        {loading ? (
+      {/* {loading ? (
           <Loading />
-        ) : (
+       ) : (*/}
           <>
             {users &&
               users.map(user => (
@@ -34,7 +39,7 @@ const Users = () => {
                 </div>
               ))}
           </>
-        )}
+        {/*)}*/}
       </div>
     </div>
   );

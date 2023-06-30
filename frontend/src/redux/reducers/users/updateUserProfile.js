@@ -15,13 +15,13 @@ import {
           user: action.payload,
           //loading: false,
           success: true,
-          //msgRegis : 'User update successfully',
+          msgRegis : 'User update successfully',
         };
       case USER_UPDATE_FAIL:
         return {
           error: action.payload,
           loading: false,
-          //msgError : 'User already exist',
+          msgError : 'User already exist',
         };
       default:
         return state;
