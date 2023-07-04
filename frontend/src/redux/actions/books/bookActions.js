@@ -4,8 +4,6 @@ import {
     CREATE_BOOK_REQUEST,
     CREATE_BOOK_SUCCESS,
 
-    FETCH_USERS_REQUEST,
-
     FETCH_BOOK_REQUEST,
     FETCH_BOOK_SUCCESS,
     FETCH_BOOK_FAIL,
@@ -51,7 +49,6 @@ import {
     };
   };    
 //Fetch all books
-
  const fetchBooks = () => {
   return async dispatch => {
     try {

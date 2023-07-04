@@ -18,10 +18,17 @@ const BookSchema = new mongoose.Schema(
       ref: "User",
       required: false,
     },
-    logmes: {
-      type: String,
-      required: false,
+	/* Ajouter les champs downloads, rate et description
+    download:{
+      type:Number,
+					  
     },
+    description:{
+      type:String,
+    },
+    rate:{
+      type:Number,
+    },*/
   },
   { timestamps: true }
 );

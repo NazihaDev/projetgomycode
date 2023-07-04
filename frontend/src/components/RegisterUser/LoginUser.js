@@ -42,7 +42,7 @@ const LoginUser = () => {
     jerror = JSON.parse(JSON.stringify(error));
    
   }
-  const displayError = jerror.data != " empty";
+  //const displayError = jerror.data !== " empty";
   
   return (
     <div className="row container-height">

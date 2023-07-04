@@ -8,7 +8,9 @@ import {
     switch (action.type) {
       // Register
       case FETCH_USERS_REQUEST:
-        return { loading: true };
+        return {
+           loading: true
+           };
       case FETCH_USERS_SUCCESS:
         return {
           users: action.payload,

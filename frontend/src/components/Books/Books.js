@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { fetchBooks, deleteBook } from "../../redux/actions/books/bookActions";
 import Loading from "../Loading/Loading";
 import { useNavigate } from "react-router-dom";
+import "./books.css";
 const Books = () => {
   console.log("BookS.js");
   //Fetch books
@@ -22,13 +23,48 @@ const Books = () => {
     dispatch(deleteBook(id));
     navigate("/books");
   };*/
-  /**/const bookslistvar = () => {
+  /**/ const bookslistvar = () => {
     if (!books || books.length === 0) {
-    //if (0 === 0) {
+      //if (0 === 0) {
       //return <div>Pas de books</div>;
     } else {
-      return (
-        <table className="table table-hover">
+      return books.map((book) => {
+        return (
+          <div className="ag-courses_item">
+            <a href="#" className="ag-courses-item_link">
+              <div className="ag-courses-item_bg"></div>
+
+              <div className="ag-courses-item_title">{book.title}</div>
+
+              <div className="ag-courses-item_date-box">
+                Author:
+                <span className="ag-courses-item_date">{book.author}</span>
+              </div>
+              <div className="ag-courses-item_date-box">
+                Category:
+                <span className="ag-courses-item_date">{book.category}</span>
+              </div>
+            </a>
+          </div>
+        );
+      });
+    }
+  };
+  // End of fetch books
+  return (
+    <div>
+      <div className="ag-format-container">
+        <div className="ag-courses_box">
+          <>{bookslistvar()}</>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Books;
+/*
+<table className="table table-hover">
           <thead>
             <tr>
               <th scope="col">Author</th>
@@ -48,19 +84,4 @@ const Books = () => {
             })}
           </tbody>
         </table>
-      );
-    }
-  };
-  // End of fetch books
-  return (
-    <div>
-      <div className="row">
-        <div className="col">
-          <>{bookslistvar()}</>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Books;
+*/

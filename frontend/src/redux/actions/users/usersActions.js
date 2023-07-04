@@ -75,7 +75,6 @@ const loginUserAction = (email, password) => {
         { email, password },
         config
       );
-
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: data,
@@ -109,7 +108,7 @@ const logoutUserAction = () => {
 
 //Profile Action
 
- const getUserProfileAction = () => {
+const getUserProfileAction = () => {
   return async (dispatch, getState) => {
     const { userInfo } = getState().userLogin;
     try {
@@ -122,7 +121,7 @@ const logoutUserAction = () => {
         },
       };
       //make request
-      const { data } = await axios.get('/api/users/profile', config);
+      const { data } = await axios.get("/api/users/profile", config);
       dispatch({
         type: USER_PROFILE_SUCCESS,
         payload: data,
@@ -130,17 +129,15 @@ const logoutUserAction = () => {
     } catch (error) {
       dispatch({
         type: USER_PROFILE_FAIL,
-        payload: error.response ,//&& error.response.data.message,
+        payload: error.response, //&& error.response.data.message,
       });
     }
   };
 };
-  
-
 
 //Update user
 
- const updateUser = (name, email, password) => {
+const updateUser = (name, email, password) => {
   return async (dispatch, getState) => {
     try {
       dispatch({
@@ -153,12 +150,12 @@ const logoutUserAction = () => {
       //Create a config and pass to axios for authentication
       const config = {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           authorization: `Bearer ${userInfo.token}`,
         },
       };
       const { data } = await axios.put(
-        '/api/users/profile/update',
+        "/api/users/profile/update",
         { name, email, password },
         config
       );
@@ -169,30 +166,26 @@ const logoutUserAction = () => {
     } catch (error) {
       dispatch({
         type: USER_UPDATE_FAIL,
-        payload:
-          error.response// && error.response.data.message
-            //? error.response.data.message
-           // : error.message,
+        payload: error.response, // && error.response.data.message
+        //? error.response.data.message
+        // : error.message,
       });
     }
   };
 };
-
-
-
- const fetchUsers = () => {
-  return async dispatch => {
+const fetchUsers = () => {
+  return async (dispatch) => {
     try {
       dispatch({
         type: FETCH_USERS_REQUEST,
-        loading: true,
+        loading: false,
       });
       const config = {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       };
-      const { data } = await axios.get('/api/users', config);
+      const { data } = await axios.get("/api/users", config);
       dispatch({
         type: FETCH_USERS_SUCCESS,
         payload: data,
@@ -200,17 +193,17 @@ const logoutUserAction = () => {
     } catch (error) {
       dispatch({
         type: FETCH_USERS_FAIL,
-        error: error.response
+        error: error.response,
         // && error.response.data.message,
       });
     }
   };
 };
-export { 
+export {
   registerUserAction,
-   loginUserAction,
-    logoutUserAction ,
-    getUserProfileAction,
-    updateUser,
-    fetchUsers
-  };
+  loginUserAction,
+  logoutUserAction,
+  getUserProfileAction,
+  updateUser,
+  fetchUsers,
+};

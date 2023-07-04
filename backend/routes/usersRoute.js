@@ -67,7 +67,6 @@ usersRoute.post(
 );
 
 //fetch users
-
 usersRoute.get(
   '/',
   authMiddleware,(async (req, res) => {
@@ -110,9 +109,63 @@ usersRoute.put(
       res.send('User Not found');
     }
   });
+// Modification user recommandation 
+//update user recommendations
+/*usersRoute.put(
+  "/profile/rec/:id",
+  //authMiddleware,
+  //asynchHandler
+  async (req, res) => {
+    const user = await User.findById(req.params.id);
+    try {
+      if (user) {
+        user.authorRec = req.body.authorRec || user.authorRec;
+        user.descRec = req.body.descRec || user.descRec;
+        user.rateRec = req.body.rateRec || user.rateRec;
+        user.catRec = req.body.catRec || user.catRec;
+        const updateUser = await user.save();
+        res.json({
+          _id: updateUser._id,
+          authorRec: updateUser.authorRec,
+          descRec: updateUser.descRec,
+          rateRec: updateUser.rateRec,
+          catRec: updateUser.catRec,
+          token: generateToken(updateUser._id),
+        });
+      } else {
+        res.status(401);
+        res.send("Unable to update user");
+      }
+    } catch (e) {
+      res.send("Unable to update user " + e);
+    }
+  }
+);
+//update user status partie admin
+usersRoute.put(
+  "/profile/admin/:id",
+  async (req, res) => {
+    const user = await User.findById(req.params.id);
+    try {
+      if (user) {
+        user.isAdmin = req.body.isAdmin;
+        const updateUser = await user.save();
+        res.json({
+          _id: updateUser._id,
+          isAdmin: updateUser.isAdmin,
+          token: generateToken(updateUser._id),
+        });
+      } else {
+        res.status(401);
+        res.send("Unable to update user status");
+      }
+    } catch (e) {
+      res.send("Unable to update user status " + e);
+    }
+  }
+);
 
-
-
+*/
 //Delete User
 
 usersRoute.delete(

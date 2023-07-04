@@ -1,17 +1,18 @@
 import React from 'react';
 import './Home.css';
 import bookpg from '../../assests/img/book.jpg';
-//import videoSource from '../../assets/books.mp4';
+import videoSource from '../../assests/img/books.mp4';
+//frontend\src\assests\img\books.mp4
 import { Link } from 'react-router-dom';
 
 const HomePage= () => {
 
   return (
     <div className='Container'>
-     { /* <video autoPlay='autoplay' loop='loop' muted className='Video'>
+      <video autoPlay='autoplay' loop='loop' muted className='Video'>
         <source src={videoSource} type='video/mp4' />
         Your browser does not support the video tag.
-      </video>*/}
+      </video>
       <div className='Content'>
         <div className='SubContent'>
           <h1>Book Catolog</h1>

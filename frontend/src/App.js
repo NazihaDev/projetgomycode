@@ -10,7 +10,7 @@ import HomePage from './components/Home/HomePage';
 import Profile from './components/Profile/Profile';
 import UpdateProfile from './components/Profile/UpdateProfile';
 import BookDetails from './components/Profile/BookDetails';
-import Users from './components/Users/Users';
+import Admin from './components/Admin/Admin';
   console.log('App function fired')
   console.log('affiche le tableau book');
   const App = () => {
@@ -31,7 +31,7 @@ import Users from './components/Users/Users';
             <Route exact path="/login" element={<LoginUser />} />
             <Route exact path="/register" element={<RegisterUser />} />
             {/*<Route exact path='/users' component={Users} />*/}
-            <Route exact path='/users' element={<Users/>} />
+            <Route exact path='/admin' element={<Admin/>} />
             
           </Routes>
         </Router>

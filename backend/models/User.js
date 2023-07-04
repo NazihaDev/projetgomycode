@@ -16,6 +16,21 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  /* Nouvelle champs pour la recommendation du l'utilisateur ///ajouter admin
+   //modification modele
+  authorRec :  {type: String,
+    required: false,},
+  descRec : {type: String,
+      required: false,},
+  rateRec : {type: Number,
+      required: false,},
+  catRec : {type: String,
+      required: false,},
+  //
+  isAdmin : {
+    type : Boolean,
+    default : false,
+ },*/
 });
 //Populating books the user created it
 
